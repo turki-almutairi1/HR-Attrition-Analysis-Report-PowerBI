@@ -13,7 +13,7 @@ The report was built entirely in **Power BI** using DAX measures, conditional fo
 
 ## Dataset
 
-- **Source:** IBM HR Analytics Employee Attrition & Performance (Kaggle)
+- **Source:** [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 - **Size:** 1,470 employees, 35 columns
 - **Type:** Real-world inspired synthetic dataset
 - **Key columns used:** `Attrition`, `YearsAtCompany`, `JobRole`, `JobLevel`, `OverTime`, `MonthlyIncome`, `MaritalStatus`, `BusinessTravel`, `YearsSinceLastPromotion`, `Department`
@@ -98,19 +98,17 @@ A broader look at company-wide factors that drive attrition regardless of role.
 ## DAX Measures Built
 
 ```
-Total Employees = COUNTROWS('HR Analytics Employee Attrition')
-
 Total Attrition = 
-COUNTROWS(FILTER('HR Analytics Employee Attrition',
-'HR Analytics Employee Attrition'[Attrition] = "Yes"))
+COUNTROWS(FILTER('dataset',
+'dataset'[Attrition] = "Yes"))
 
 Attrition Rate = 
 DIVIDE([Total Attrition], [Total Employees], 0)
 
 Early Attrition = 
-COUNTROWS(FILTER('HR Analytics Employee Attrition',
-'HR Analytics Employee Attrition'[Attrition] = "Yes" &&
-'HR Analytics Employee Attrition'[YearsAtCompany] <= 5))
+COUNTROWS(FILTER('dataset',
+'dataset'[Attrition] = "Yes" &&
+'dataset'[YearsAtCompany] <= 5))
 ```
 
 ---
@@ -131,21 +129,5 @@ Based on the findings in this report, the following actions are suggested for HR
 
 ---
 
-## Files in This Repository
-
-| File | Description |
-|---|---|
-| `HR_Attrition_Analysis.pbix` | Power BI report file |
-| `HR_Attrition_Analysis.pdf` | Exported PDF of all report pages |
-| `WA_Fn-UseC_-HR-Employee-Attrition.csv` | Raw dataset |
-| `README.md` | This file |
-
----
-
-## About
-
-This project was built as part of a portfolio pivot into **HR Analytics / People Analytics**. It demonstrates the ability to work with real HR data, extract meaningful workforce insights, and communicate findings clearly to a non-technical audience.
-
 **Author:** Turki Almutairi
 **Contact:** Turkinayyaf@proton.me
-**Portfolio:** [Portfolio Link]
